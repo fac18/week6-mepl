@@ -49,7 +49,7 @@ function postHandler (req, res) {
         allData += chunk;
     })
     req.on('end', () => {
-        console.log('all data  from getData: ', querystring.parse(allData));
+        console.log('This is all the data from getData: ', querystring.parse(allData));
         // const {x ,y, z} = querystring.parse(allData);
         ourTable(x, y, z, err => {
             if (err) {
@@ -70,7 +70,7 @@ function getHandler (req, res) {
     })
 
     req.on('end', () => {
-        console.log('all from get handler: ', querystring.parse(allData));
+        console.log('This is all the data from get handler: ', querystring.parse(allData));
         const{x, y, z} = querystring.parse(allData);
         ourTable(x, y, z, err => {
             if (err) {

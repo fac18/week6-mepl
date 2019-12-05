@@ -3,7 +3,24 @@ h1 {
 }
 
 body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-image: url('../background.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.fWrapper {
+    background: whitesmoke;
+    opacity: 0.6;
+    padding: 4rem;
+    min-width: 60%;
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 /* 404.css */

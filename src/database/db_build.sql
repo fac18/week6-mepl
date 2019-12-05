@@ -7,7 +7,7 @@ DROP TABLE IF EXISTS users, shop, basket CASCADE;
 CREATE TABLE IF NOT EXISTS users (
   id SERIAL PRIMARY KEY,
   name varchar,
-  kitty decimal DEFAULT 16
+  kitty integer DEFAULT 16
 );
 
 INSERT INTO users (name) VALUES ('Ana');
@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS shop (
   id SERIAL PRIMARY KEY,
   fruit varchar,
   stock int,
-  price decimal
+  price integer
 );
 
 INSERT INTO shop (fruit, stock, price) VALUES ('Apples 6 pack', 100, 1.29);

@@ -2,7 +2,7 @@
 
 BEGIN;
 
--- DROP TABLE IF EXISTS users, shop, basket;
+DROP TABLE IF EXISTS users, shop, basket CASCADE;
 
 CREATE TABLE IF NOT EXISTS users (
   id SERIAL PRIMARY KEY,

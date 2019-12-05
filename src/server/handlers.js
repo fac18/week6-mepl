@@ -37,7 +37,7 @@ fs.readFile(filePath, (err, file) => {
      res.writeHead(404, {'Content-type' : 'text/html'});
      res.end('<h1> 404 nothing here </h1>')
  } else {
-     res.writeHead(200, {'Content-type' : 'text/html'});
+     res.writeHead(200, {'Content-type' : extensionType[extension]});
      res.end(file);
  }
 });

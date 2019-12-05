@@ -1,0 +1,32 @@
+{
+  "name": "week6-mepl",
+  "version": "1.0.0",
+  "description": "Kin - Maria - Nikke - Pat",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "testdb": "NODE_ENV=test node tests/database-test.js",
+    "dev": "nodemon src/server.js",
+    "coverage": "nyc tape test/*.js | tap-spec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kin-au/week6-mepl.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kin-au/week6-mepl/issues"
+  },
+  "homepage": "https://github.com/kin-au/week6-mepl#readme",
+  "devDependencies": {
+    "env2": "^2.2.2",
+    "nock": "^11.7.0",
+    "nodemon": "^2.0.1",
+    "nyc": "^14.1.1",
+    "supertest": "^4.0.2",
+    "tap-spec": "^5.0.0",
+    "tape": "^4.11.0"
+  }
+}

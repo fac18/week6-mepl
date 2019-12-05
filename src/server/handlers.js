@@ -25,7 +25,7 @@ function handlePublic(req, res, endpoint) {
         css: 'text/css',
         js: 'text/javascript',
         png: 'image/png',
-        jpeg: 'image/jpeg'
+        jpg: 'image/jpg'
     }
     
 const filePath = path.join(__dirname, '..', '..', endpoint);

@@ -14,12 +14,13 @@ const createUser = (username, cb) => {
 };
 
 const getStockData = cb => {
-  console.log("1. I'm in getStockData!");
   databaseConnection.query(
     "SELECT fruit, stock, price FROM shop ORDER BY id",
     (err, res) => {
-      console.log("2. where are we?");
-      if (err) console.log("3. can we see getStockData?");
+      if (err) {
+        console.log(err);
+        return;
+      }
       cb(null, res.rows);
     }
   );

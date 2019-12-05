@@ -65,34 +65,16 @@ function postHandler(req, res) {
 }
 
 function getHandler(req, res) {
-  console.log("0. hiiiiiiiii");
-  getData.getStockData((err, res) => {
-    console.log("Can we see this?");
-    if (err) console.log(err);
-    else {
-      const stockArray = JSON.stringify(res);
-      response.writeHead(200, { "Content-Type": "application/json" });
-      response.end(console.log(stockArray));
+  getData.getStockData((err, data) => {
+    if (err) {
+      console.log(err);
+    } else {
+      const stockArray = JSON.stringify(data);
+      res.writeHead(200, { "Content-Type": "application/json" });
+      res.end(stockArray);
     }
   });
 }
-// let allData = '';
-// req.on('data' , chunk => {
-//     allData += chunk;
-// })
-
-// req.on('end', () => {
-//     console.log('This is all the data from get handler: ', querystring.parse(allData));
-//     const{x, y, z} = querystring.parse(allData);
-//     ourTable(x, y, z, err => {
-//         if (err) {
-//             res.writeHead(500, 'Computer says no')
-//             res.end('<h1> Sorry no files for you</h1>')
-//         }
-//     res.writeHead(301, {Location: '/'});
-//     res.end(JSON.stringify(result))
-//     })
-// })
 
 module.exports = {
   handleHome,

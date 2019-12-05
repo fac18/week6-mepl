@@ -31,6 +31,7 @@ nameBtn.addEventListener("click", event => {
   }
 });
 
+// Request to get stock levels from database
 const getStock = () => {
   const xhr = new XMLHttpRequest();
   const url = "/getstock";
@@ -44,35 +45,46 @@ const getStock = () => {
   xhr.send();
 };
 
+// When page loads, retrieve stock levels from database
 window.addEventListener("load", getStock);
 
-// add stock items to client side via DOM manipulation
+// List stock items on client side via DOM manipulation
 const populateStockTable = arr => {
   const stockTable = document.querySelector(".stock_table tbody");
 
+  // Clear all fruit listed on landing page
   while (stockTable.children.length > 1) {
     stockTable.removeChild(stockTable.lastChild);
   }
 
   arr.forEach((item, index) => {
-    let newItem = document.createElement("tr");
-    // Item details filled in
-    let newItemName = document.createElement("td");
-    newItemName.innerText = item.item_name;
-    newItem.appendChild(newItemName);
-    let newItemQuantity = document.createElement("td");
-    newItemQuantity.innerText = item.item_quantity;
-    newItem.appendChild(newItemQuantity);
-    let newItemPrice = document.createElement("td");
-    newItemPrice.innerText = item.item_price;
-    newItem.appendChild(newItemPrice);
-    let newItemButton = document.createElement("button");
-    newItemButton.innerText = "Add to basket";
-    newItemButton.classList.add("add-to-basket");
-    newItemButton.setAttribute("onclick", `addToBasket('${item.item_name}')`);
-    newItem.appendChild(newItemButton);
-    // Full new row added
-    stockTable.appendChild(newItem);
+    // Create a new row for each fruit
+    let fruit = document.createElement("tr");
+
+    // In same row, create a new column for each fruit name
+    let fruitName = document.createElement("td");
+    fruitName.innerText = item.fruit;
+    fruit.appendChild(fruitName);
+
+    // In same row, create a new column for quantity in stock
+    let fruitStock = document.createElement("td");
+    fruitStock.innerText = item.stock;
+    fruit.appendChild(fruitStock);
+
+    // In same row, create a new column to display fruit price
+    let fruitPrice = document.createElement("td");
+    fruitPrice.innerText = item.price;
+    fruit.appendChild(fruitPrice);
+
+    // In same row, create a new button to Add to Basket
+    let addToBasketButton = document.createElement("button");
+    addToBasketButton.innerText = "Add to basket";
+    addToBasketButton.classList.add("add-to-basket");
+    addToBasketButton.setAttribute("onclick", `addToBasket('${item.fruit}')`);
+    fruit.appendChild(addToBasketButton);
+
+    // Add newly created fruit row (fruit, quantity, price, button) to stockTable
+    stockTable.appendChild(fruit);
   });
 };
 

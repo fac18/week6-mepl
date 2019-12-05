@@ -1,1 +1,4 @@
-# week6-mepl
+# Week 6 Project
+Kin - Maria - Nikke - Pat
+
+---

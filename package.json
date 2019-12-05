@@ -29,5 +29,8 @@
     "supertest": "^4.0.2",
     "tap-spec": "^5.0.0",
     "tape": "^4.11.0"
+  },
+  "dependencies": {
+    "pg": "^7.14.0"
   }
 }

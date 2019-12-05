@@ -12,7 +12,7 @@ const router = (request, response) => {
         handleHome(request, response);
     }
     else if (endpoint.includes('public')) {
-        handlePublic(request, response);
+        handlePublic(request, response, endpoint);
     }
     else if (endpoint === '/.......') {
         getHandler(request, response);

@@ -6,7 +6,7 @@ const getData = require("../queries/get-data");
 const postData = require("../queries/post-data");
 const querystring = require("querystring");
 
-function handleHome(req, res, endpoint) {
+const handleHome = (req, res, endpoint) => {
   const filePath = path.join(__dirname, "..", "..", "index.html");
   fs.readFile(filePath, (err, file) => {
     if (err) {
@@ -19,7 +19,7 @@ function handleHome(req, res, endpoint) {
   });
 }
 
-function handlePublic(req, res, endpoint) {
+const handlePublic = (req, res, endpoint) => {
   const extension = endpoint.split(".")[1];
   const extensionType = {
     html: "text/html",
@@ -33,8 +33,8 @@ function handlePublic(req, res, endpoint) {
 
   fs.readFile(filePath, (err, file) => {
     if (err) {
-      res.writeHead(404, { "Content-type": "text/html" });
-      res.end("<h1> 404 nothing here </h1>");
+      res.writeHead(500, { "Content-type": "text/html" });
+      res.end("<h1> Sorry, there is an error on our end </h1>");
     } else {
       res.writeHead(200, { "Content-type": extensionType[extension] });
       res.end(file);
@@ -54,7 +54,24 @@ function postHandler(req, res) {
   });
 };
 
-function getHandler(req, res) {
+function handle404(req, res) {
+
+  const filePath = path.join(__dirname, "..", "..", "public", "html", "404.html");
+
+  fs.readFile(filePath, (err, file) => {
+    if (err) {
+      res.writeHead(500, { "Content-type": "text/html" });
+      res.end("<h1> Sorry, there's a server errror </h1>");
+    } else {
+      res.writeHead(404, { "Content-type": "text/html" });
+      res.end(file);
+    }
+  });
+}
+
+
+
+const getHandler = (req, res) => {
   getData.getStockData((err, data) => {
     if (err) {
       console.log(err);
@@ -70,5 +87,6 @@ module.exports = {
   handleHome,
   handlePublic,
   postHandler,
-  getHandler
+  getHandler,
+  handle404
 };

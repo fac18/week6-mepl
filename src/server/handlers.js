@@ -33,10 +33,25 @@ const handlePublic = (req, res, endpoint) => {
 
   fs.readFile(filePath, (err, file) => {
     if (err) {
-      res.writeHead(404, { "Content-type": "text/html" });
-      res.end("<h1> 404 nothing here </h1>");
+      res.writeHead(500, { "Content-type": "text/html" });
+      res.end("<h1> Sorry, there is an error on our end </h1>");
     } else {
       res.writeHead(200, { "Content-type": extensionType[extension] });
+      res.end(file);
+    }
+  });
+}
+
+function handle404(req, res, endpoint) {
+
+  const filePath = path.join(__dirname, "..", "..", "public", "html", "404.html");
+
+  fs.readFile(filePath, (err, file) => {
+    if (err) {
+      res.writeHead(500, { "Content-type": "text/html" });
+      res.end("<h1> Sorry, there's a server errror </h1>");
+    } else {
+      res.writeHead(404, { "Content-type": "text/html" });
       res.end(file);
     }
   });
@@ -80,5 +95,6 @@ module.exports = {
   handleHome,
   handlePublic,
   postHandler,
-  getHandler
+  getHandler,
+  handle404
 };

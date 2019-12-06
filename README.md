@@ -6,5 +6,5 @@ Kin - Maria - Nikke - Pat
 ## To install:
 
 - clone repo
-- ```npm install```
-- use ```npm run dev```
+- run ```npm install```
+- use ```npm start```

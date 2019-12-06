@@ -43,25 +43,29 @@ function handlePublic(req, res, endpoint) {
 }
 
 function postHandler(req, res) {
-  let allData = "";
-  req.on("data", chunk => {
-    allData += chunk;
-  });
-  req.on("end", () => {
-    console.log(
-      "This is all the data from getData: ",
-      querystring.parse(allData)
-    );
-    // const {x ,y, z} = querystring.parse(allData);
-    ourTable(x, y, z, err => {
-      if (err) {
-        res.writeHead(500, { "Content-type": "text/html" });
-        res.end("<h1>Server side error </h1>");
-      }
-      res.writeHead(301, { Location: "/" });
-      res.end(JSON.stringify(result));
-    });
-  });
+  console.log(req.url);
+  // postData.postName((err, data), req.url)
+  postData.postName(req.url);
+
+  // let allData = "";
+  // req.on("data", chunk => {
+  //   allData += chunk;
+  // });
+  // req.on("end", () => {
+  //   console.log(
+  //     "This is all the data from getData: ",
+  //     querystring.parse(allData)
+  //   );
+  //   // const {x ,y, z} = querystring.parse(allData);
+  //   ourTable(x, y, z, err => {
+  //     if (err) {
+  //       res.writeHead(500, { "Content-type": "text/html" });
+  //       res.end("<h1>Server side error </h1>");
+  //     }
+  //     res.writeHead(301, { Location: "/" });
+  //     res.end(JSON.stringify(result));
+  //   });
+  // });
 }
 
 function getHandler(req, res) {

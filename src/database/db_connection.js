@@ -21,5 +21,6 @@ const options = {
   ssl: params.hostname !== "localhost"
 };
 
+
 const dbConnection = new Pool(options);
 module.exports = dbConnection;

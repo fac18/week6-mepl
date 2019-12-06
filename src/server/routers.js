@@ -13,8 +13,9 @@ const router = (request, response) => {
     handlePublic(request, response, endpoint);
   } else if (endpoint === "/getstock") {
     getHandler(request, response);
-  } else if (endpoint === "/.......") {
-    postHandler(postHandler);
+  } else if (endpoint.includes("submitname")) {
+    // console.log("post router");
+    postHandler(request, response);
   } else {
     response.writeHead(404, { "Content-type": "text/html" });
     response.end("<h1> Page not found</h1>");

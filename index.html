@@ -16,27 +16,27 @@
   </head>
 
   <body>
-    <section class="displayUsername"></section>
-    <section class="nameField">
-      <form>
-        <label for="new-username" class="name">Name:</label>
-        <input
-          id="new-username"
-          aria-label="Enter your name"
-          type="text"
-          placeholder="Enter your name..."
-          autocomplete="off"
-          required
-        />
-        <button aria-label="Submit your details" type="submit" id="nameBtn">
-          Submit
-        </button>
-      </form>
-    </section>
     <section class="fWrapper">
       <section>
         <section class="hBox">
           <h1>FAC Fruit Basket</h1>
+        </section>
+        <section class="displayUsername"></section>
+        <section class="nameField">
+          <form action="/submitname" method="post">
+            <label for="new-username" class="name">Name:</label>
+            <input
+              id="new-username"
+              aria-label="Enter your name"
+              type="text"
+              placeholder="Enter your name..."
+              autocomplete="off"
+              required
+            />
+            <button aria-label="Submit your details" type="submit" id="nameBtn">
+              Submit
+            </button>
+          </form>
         </section>
         <h2>Fruit Shop</h2>
         <p>Kitty:</p>

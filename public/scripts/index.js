@@ -1,33 +1,39 @@
 const newUser = document.getElementById("new-username");
 const nameBtn = document.getElementById("nameBtn");
 const nameField = document.getElementsByClassName("nameField")[0];
-console.log(nameField);
 const displayUsername = document.getElementsByClassName("displayUsername")[0];
-// const weatherSection = document.querySelector(".weather-container");
+const kitty = document.querySelector("#kitty")
 
 nameBtn.addEventListener("click", event => {
   event.preventDefault();
+  console.log(newUser.value);
   if (newUser.value) {
     let yourName = newUser.value;
-    // let xhr = new XMLHttpRequest();
-    // let url = `http://localhost:5500/index.html?`;
+    let xhr = new XMLHttpRequest();
+    // DOM manipulation
     nameField.style.display = "none";
     var para = document.createElement("p");
     para.classList.add("NWrapper");
     var displayUser = document.createTextNode(
       `Hi ${yourName}, get started on your 5 a day!`
-    ); // Create a text node
+    ); 
+    // Create a text node
     para.appendChild(displayUser);
     displayUsername.appendChild(para);
 
-    // xhr.onreadystatechange = () => {
-    //   if (xhr.readyState == 4 && xhr.status == 200) {
-    //     let originLocation = JSON.parse(xhr.responseText);
+    let submitName = "submitname=" + yourName;
+    let encodedName = encodeURIComponent(submitName);
+    console.log(encodedName);
 
-    //   }
-    // };
-    // xhr.open("GET", url, true);
-    // xhr.send();
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState == 4 && xhr.status == 200) {
+        let kittyAmount = JSON.parse(xhr.responseText);
+        kitty.textContent = `Kitty: ${kittyAmount}`;
+      }
+    };
+    xhr.open("POST", encodedName, true);
+    xhr.setRequestHeader('Content-Type', 'text/plain');
+    xhr.send();
   }
 });
 
@@ -41,7 +47,7 @@ const getStock = () => {
       populateStockTable(stockArray);
     }
   };
-  xhr.open("GET", url);
+  xhr.open("GET", url, true);
   xhr.send();
 };
 

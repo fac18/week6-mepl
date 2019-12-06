@@ -14,8 +14,8 @@ const router = (request, response) => {
     handlePublic(request, response, endpoint);
   } else if (endpoint === "/getstock") {
     getHandler(request, response);
-  } else if (endpoint === "/.......") {
-    postHandler(postHandler);
+  } else if (endpoint.includes("submitname")) {
+    postHandler(request, response);
   } else {
     handle404(request, response);
   }

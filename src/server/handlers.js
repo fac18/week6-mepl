@@ -42,7 +42,19 @@ const handlePublic = (req, res, endpoint) => {
   });
 }
 
-function handle404(req, res, endpoint) {
+function postHandler(req, res) {
+  postData.postName(req.url, (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      const kittyAmount = JSON.stringify(result);
+      res.writeHead(200, { "Content-Type": "application/json" });
+      res.end(kittyAmount);
+    }
+  });
+};
+
+function handle404(req, res) {
 
   const filePath = path.join(__dirname, "..", "..", "public", "html", "404.html");
 
@@ -57,27 +69,7 @@ function handle404(req, res, endpoint) {
   });
 }
 
-const postHandler = (req, res) => {
-  let allData = "";
-  req.on("data", chunk => {
-    allData += chunk;
-  });
-  req.on("end", () => {
-    console.log(
-      "This is all the data from getData: ",
-      querystring.parse(allData)
-    );
-    // const {x ,y, z} = querystring.parse(allData);
-    ourTable(x, y, z, err => {
-      if (err) {
-        res.writeHead(500, { "Content-type": "text/html" });
-        res.end("<h1>Server side error </h1>");
-      }
-      res.writeHead(301, { Location: "/" });
-      res.end(JSON.stringify(result));
-    });
-  });
-}
+
 
 const getHandler = (req, res) => {
   getData.getStockData((err, data) => {

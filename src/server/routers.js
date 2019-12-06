@@ -2,7 +2,8 @@ const {
   handleHome,
   handlePublic,
   postHandler,
-  getHandler
+  getHandler,
+  handle404
 } = require("./handlers");
 
 const router = (request, response) => {
@@ -16,8 +17,7 @@ const router = (request, response) => {
   } else if (endpoint === "/.......") {
     postHandler(postHandler);
   } else {
-    response.writeHead(404, { "Content-type": "text/html" });
-    response.end("<h1> Page not found</h1>");
+    handle404(request, response);
   }
 };
 

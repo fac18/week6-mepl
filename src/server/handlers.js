@@ -6,7 +6,7 @@ const getData = require("../queries/get-data");
 const postData = require("../queries/post-data");
 const querystring = require("querystring");
 
-function handleHome(req, res, endpoint) {
+const handleHome = (req, res, endpoint) => {
   const filePath = path.join(__dirname, "..", "..", "index.html");
   fs.readFile(filePath, (err, file) => {
     if (err) {
@@ -19,7 +19,7 @@ function handleHome(req, res, endpoint) {
   });
 }
 
-function handlePublic(req, res, endpoint) {
+const handlePublic = (req, res, endpoint) => {
   const extension = endpoint.split(".")[1];
   const extensionType = {
     html: "text/html",
@@ -42,7 +42,7 @@ function handlePublic(req, res, endpoint) {
   });
 }
 
-function postHandler(req, res) {
+const postHandler = (req, res) => {
   let allData = "";
   req.on("data", chunk => {
     allData += chunk;
@@ -64,7 +64,7 @@ function postHandler(req, res) {
   });
 }
 
-function getHandler(req, res) {
+const getHandler = (req, res) => {
   getData.getStockData((err, data) => {
     if (err) {
       console.log(err);

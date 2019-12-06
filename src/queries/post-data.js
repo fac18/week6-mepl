@@ -2,22 +2,19 @@
 
 const dbConnection = require("../database/db_connection");
 
-
-// needs to protect against script injections
-
 const postName = (name, cb) => {
     let nameSplit = name.split('%3D')[1];
-    console.log(nameSplit)
     dbConnection.query(
-        `INSERT INTO users (name) VALUES ('${nameSplit}')`,
-        // `SELECT kitty FROM users WHERE name = ('${name}')`,
-        // [name],
-      (err, res) => {
-        if (err) {
-          console.log(err);
-          return;
-        } 
-      }
+        `INSERT INTO users (name) VALUES ($1)
+        RETURNING kitty`,
+        [nameSplit],
+        (err, res) => {
+            if (err) {
+                console.log(err);
+                return;
+            }
+            cb(null, res.rows[0].kitty)
+        }
     );
   };
 

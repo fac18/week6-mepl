@@ -43,30 +43,16 @@ function handlePublic(req, res, endpoint) {
 }
 
 function postHandler(req, res) {
-  console.log(req.url);
-  // postData.postName((err, data), req.url)
-  postData.postName(req.url);
-
-  // let allData = "";
-  // req.on("data", chunk => {
-  //   allData += chunk;
-  // });
-  // req.on("end", () => {
-  //   console.log(
-  //     "This is all the data from getData: ",
-  //     querystring.parse(allData)
-  //   );
-  //   // const {x ,y, z} = querystring.parse(allData);
-  //   ourTable(x, y, z, err => {
-  //     if (err) {
-  //       res.writeHead(500, { "Content-type": "text/html" });
-  //       res.end("<h1>Server side error </h1>");
-  //     }
-  //     res.writeHead(301, { Location: "/" });
-  //     res.end(JSON.stringify(result));
-  //   });
-  // });
-}
+  postData.postName(req.url, (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      const kittyAmount = JSON.stringify(result);
+      res.writeHead(200, { "Content-Type": "application/json" });
+      res.end(kittyAmount);
+    }
+  });
+};
 
 function getHandler(req, res) {
   getData.getStockData((err, data) => {

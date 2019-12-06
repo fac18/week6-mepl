@@ -14,7 +14,6 @@ const router = (request, response) => {
   } else if (endpoint === "/getstock") {
     getHandler(request, response);
   } else if (endpoint.includes("submitname")) {
-    // console.log("post router");
     postHandler(request, response);
   } else {
     response.writeHead(404, { "Content-type": "text/html" });

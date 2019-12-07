@@ -192,5 +192,7 @@ https://en.wikipedia.org/wiki/Uniform_Resource_Identifier
 - update stock data with purchases
 - deduct from kitty our purchases
 
+---
 
+![sgc](https://user-images.githubusercontent.com/51528685/70372950-87003c00-18dd-11ea-9604-3ac98da9b39d.jpg)
 

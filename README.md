@@ -1,3 +1,7 @@
+[Our HackMD presentation can be found here](https://hackmd.io/G4WIfHwfSiOa5DfMNxHTAQ?both)
+
+---
+
 # Team firefighter
 
 Kin - Maria - Nikke - Pat

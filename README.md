@@ -8,7 +8,7 @@ Kin - Maria - Nikke - Pat
 
 ## The fastest brain-storming ever! 
 
-![](https://i.imgur.com/svorqsn.jpg =400x)
+![](https://i.imgur.com/svorqsn.jpg)
 
 We just decided to run with our 2nd idea. 
 
@@ -23,13 +23,13 @@ And were really happy with it!
 
 ## User story sketches
 
-![](https://i.imgur.com/0BgrsYG.jpg =200x)
+![](https://i.imgur.com/0BgrsYG.jpg)
 
 ---
 
 ## Architecture sketch
 
-![](https://i.imgur.com/2BhgfsG.jpg =300x)
+![](https://i.imgur.com/2BhgfsG.jpg)
 
 We made a quick sketch to make sure that every member of our team understood how information would flow through our project as well as being a brief overview of how our rough file architecture might be laid out. 
 
@@ -37,7 +37,7 @@ We made a quick sketch to make sure that every member of our team understood how
 
 ## Project architecture
 
-![](https://i.imgur.com/LW7XZrV.png =400x)
+![](https://i.imgur.com/LW7XZrV.png)
 
 ---
 
@@ -46,7 +46,7 @@ We made a quick sketch to make sure that every member of our team understood how
 ##### GOOD vs BAD life choices 
 
 
-![](https://i.imgur.com/5OznWjm.jpg =600x300)
+![](https://i.imgur.com/5OznWjm.jpg)
 
 ---
 
@@ -60,7 +60,7 @@ We made a quick sketch to make sure that every member of our team understood how
 
 ... we changed our minds...
 
-![](https://media.giphy.com/media/48M4FVK5UeRNglWAyk/giphy.gif =300x)
+![](https://media.giphy.com/media/48M4FVK5UeRNglWAyk/giphy.gif)
 
 ### WHY?
 
@@ -117,7 +117,7 @@ And decided to go with our initial FAC Fruit Basket idea which would better fill
 
 ### We kept recieving this error code:
 
-![](https://i.imgur.com/Murb0Bo.png =400x)
+![](https://i.imgur.com/Murb0Bo.png)
 
 So we traced the bug back to our db_connections file.
 

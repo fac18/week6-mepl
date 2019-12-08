@@ -77,7 +77,7 @@ const getHandler = (req, res) => {
     if (err) {
       console.log(err);
     } else {
-      const stockArray = JSON.stringify(data.rows);
+      const stockArray = JSON.stringify(data);
       res.writeHead(200, { "Content-Type": "application/json" });
       res.end(stockArray);
     }

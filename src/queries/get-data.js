@@ -5,7 +5,13 @@ const databaseConnection = require("../database/db_connection");
 const getStockData = cb => {
   databaseConnection.query(
     "SELECT fruit, stock, price FROM shop ORDER BY id",
-    cb
+    (err, res) => {
+      if (err) {
+        console.log(err);
+        return;
+      }
+      cb(null, res.rows);
+    }
   );
 };
 

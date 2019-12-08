@@ -1,44 +1,39 @@
-# Week 6 Project
-Kin - Maria - Nikke - Pat
+[Our HackMD presentation can be found here](https://hackmd.io/G4WIfHwfSiOa5DfMNxHTAQ?both)
 
 ---
 
-## To install:
+# Team firefighter
 
-- clone repo
-- run ```npm install```
-- use ```npm start```
-
-# PROBLEMS
-Bet you didn't expect to see this on the first slide)
+Kin - Maria - Nikke - Pat
 
 ![](https://media.giphy.com/media/VZ5gRT17YNkn6/giphy.gif)
-
-append-stock-to-front-end
 
 ---
 
 ## The fastest brain-storming ever! 
 
-![](https://i.imgur.com/svorqsn.jpg =400x)
-We had a few ideas, we were all set on having a site that would calculate your life span based on your life choices for some time. Though, this idea was vetoed because we realised that using sql to create this site would be redundant and thought it best to go for an idea which better fit the specification for the week.
+![](https://i.imgur.com/svorqsn.jpg)
 
-We decided to run with our 2nd idea, inspired by the FaC fruit basket. An online shop of sorts where you could buy fruit. 
-Our customers would start off with a certain amount of money in their kitty and hopefully spend it all on the fruit available in our database. 
+We just decided to run with our 2nd idea. 
+
+And were really happy with it! 
+
+* life span based on your life choices
+* you'd either increase or decrease your lifespan
+
 
 ---
 
 
-## User stories
+## User story sketches
 
-![](https://i.imgur.com/0BgrsYG.jpg =200x)
-
-We sketched out what our user stories would be and also made sure to add these as issues. As you can see this sketch refers to the idea we didn't actually end up going with and when we had decided on the fruit basket we were mid-flow. We all reached a good verbal understanding of what we were doing and made sure to alter our existing issues.
+![](https://i.imgur.com/0BgrsYG.jpg)
 
 ---
 
 ## Architecture sketch
-![](https://i.imgur.com/2BhgfsG.jpg =200x)
+
+![](https://i.imgur.com/2BhgfsG.jpg)
 
 We made a quick sketch to make sure that every member of our team understood how information would flow through our project as well as being a brief overview of how our rough file architecture might be laid out. 
 
@@ -46,13 +41,14 @@ We made a quick sketch to make sure that every member of our team understood how
 
 ## Project architecture
 
-![](https://i.imgur.com/LW7XZrV.png =200x)
+![](https://i.imgur.com/LW7XZrV.png)
 
 ---
-## Examples of what our database will capture
 
-### GOOD vs BAD 
-### life choices 
+### Examples of what our database would have captured
+
+##### GOOD vs BAD life choices 
+
 
 ![](https://i.imgur.com/5OznWjm.jpg)
 
@@ -64,27 +60,26 @@ We made a quick sketch to make sure that every member of our team understood how
 
 ---
 
-## Accessibility
+### Then at noon on Thurs 5th Dec...
 
-![](https://i.imgur.com/ROynGML.jpg)
+... we changed our minds...
 
----
+![](https://media.giphy.com/media/48M4FVK5UeRNglWAyk/giphy.gif)
 
-## Day 1 
-- Mobbing html
-- Mobbing file architecture
-- Creating a basic structure of how information would be transmitted between the front and back-end
-
----
-
-### Then at 12pm on Thurs 5th Dec...
-
-![](https://media.giphy.com/media/48M4FVK5UeRNglWAyk/giphy.gif =100x)
-... we changed our minds
-
----
+### WHY?
 
 The database schemas ended up being more difficult than we initially thought and wasn't ideal for fulfilling the project criteria. So we had to rethink our great idea.
+
+And decided to go with our initial FAC Fruit Basket idea which would better fill the project requirements of retrieving data from a database.  Still a good idea!
+
+---
+
+## User stories
+
+- As a user, I want to buy virtual fruit with virtual money
+- As a user, I want to see the fruit basket items and stock
+- As a user, I want to see the shop's items and stock
+- As a user, I want to be able to view my personal details on the website
 
 ---
 
@@ -94,20 +89,114 @@ The database schemas ended up being more difficult than we initially thought and
 
 ---
 
-### Current outstanding problems: 
+## Architecture 2.0
 
-- unable to update database with user input
-- unable to retrieve shop data from database
-- yet to release website to host on heroku
+![](https://i.imgur.com/EhgN3oG.jpg)
 
 ---
 
 ### Things we have achieved
 
 - deployed database to heroku 
-- great CSS! 
-- user knows they've logged in
-- test! 
-- we did a lot of learning! 
+- great CSS! - 404 fun
+- user knows they've logged in!
+- user data has been sent to database
+- database returns data
+- tests! 
+- we did a helluva lot of learning! Esp debugging!
 
 ---
+
+## Accessibility
+
+![](https://i.imgur.com/ROynGML.jpg)
+
+---
+
+### ERROR DEBUGGING
+
+![](https://media.giphy.com/media/1xOQlQxrIX4Jw6lBZI/giphy.gif)
+
+---
+
+### We kept recieving this error code:
+
+![](https://i.imgur.com/Murb0Bo.png)
+
+So we traced the bug back to our db_connections file.
+
+### CAN YOU SPOT IT?
+
+``` javascript=
+const params = url.parse(process.env.DB_URL);
+// const [username, password] = params.auth.split(":");
+
+const options = {
+  host: params.hostname,
+  port: params.port,
+  database: params.pathname.split("/"[1]), 
+  max: process.env.DB_MAX_CONNECTIONS || 2,
+  // user: username,
+  // password: password,
+  ssl: params.hostname !== "localhost"
+};
+```
+
+#### Correct:
+
+![](https://i.imgur.com/Uq3eMuS.png)
+
+#### Incorrect:
+
+![](https://i.imgur.com/cH2NHtW.png)
+
+
+### So this also means:
+
+![](https://i.imgur.com/Mch41hZ.png)
+
+
+---
+
+### User/password
+
+
+``` javascript=
+const params = url.parse(process.env.DB_URL);
+// const [username, password] = params.auth.split(":");
+
+const options = {
+  host: params.hostname,
+  port: params.port,
+  database: params.pathname.split("/"[1]), 
+  max: process.env.DB_MAX_CONNECTIONS || 2,
+  // user: username,
+  // password: password,
+  ssl: params.hostname !== "localhost"
+};
+```
+
+https://en.wikipedia.org/wiki/Uniform_Resource_Identifier
+![](https://i.imgur.com/wVTPuSc.png)
+
+![](https://i.imgur.com/Pc1NAw1.png)
+
+
+![](https://i.imgur.com/kEc1hSp.png)
+
+---
+
+## Things to add
+
+- more tests
+- check and retrieve existing user information from database
+- login/authentication
+- host on heroku
+- update database with user input
+- update stock data with purchases
+- deduct from kitty our purchases
+
+---
+
+![sgc](https://user-images.githubusercontent.com/51528685/70372950-87003c00-18dd-11ea-9604-3ac98da9b39d.jpg)
+

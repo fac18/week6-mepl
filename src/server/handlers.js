@@ -84,6 +84,7 @@ const getHandler = (req, res) => {
   });
 }
 
+
 module.exports = {
   handleHome,
   handlePublic,
